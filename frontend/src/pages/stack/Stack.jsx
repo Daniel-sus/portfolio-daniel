@@ -33,7 +33,9 @@ const Stack = () => {
         {stack.map((skill) => (
           <div className="stack__item" key={skill.skillType}>
             <Typography variant="h3" className="title">
-              {i18n.language === "english" ? skill.skillType : skill.skillTypeUkr}
+              {i18n.language === "english"
+                ? skill.skillType
+                : skill.skillTypeUkr}
             </Typography>
             <div className="skills__list">
               {skill?.skillsArray &&
@@ -41,13 +43,15 @@ const Stack = () => {
                   <div className="skills__item" key={index}>
                     <img
                       className={
-                        skill.skillType === "Languages" ? "skills__image-flag" : "skills__image"
+                        skill.skillType === "Languages"
+                          ? "skills__image-flag"
+                          : "skills__image"
                       }
                       src={
-                        item.title === "React router"
-                          ? mode === "light"
-                            ? urlFor(item.imgUrl)
-                            : urlFor(item.imgUrlDark)
+                        mode === "dark"
+                          ? item.imgUrlDark
+                            ? urlFor(item.imgUrlDark)
+                            : urlFor(item.imgUrl)
                           : urlFor(item.imgUrl)
                       }
                       alt="icon"

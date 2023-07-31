@@ -87,7 +87,9 @@ const Modal = ({ mobileVersion, modalItem, setIsModalOpen }) => {
         exit={{
           scale: 0,
         }}
-        className={mode === "dark" ? "modal__wrapper wrapper--dark" : "modal__wrapper"}
+        className={
+          mode === "dark" ? "modal__wrapper wrapper--dark" : "modal__wrapper"
+        }
       >
         <motion.div
           className="modal__content--wrapper"
@@ -99,10 +101,19 @@ const Modal = ({ mobileVersion, modalItem, setIsModalOpen }) => {
             {modalItem?.imagesArray &&
               (!mobileVersion ? (
                 modalItem.imagesArray.map((image, index) => (
-                  <img key={index} className="image" src={urlFor(image)} alt="pizza" />
+                  <img
+                    key={index}
+                    className="image"
+                    src={urlFor(image)}
+                    alt="pizza"
+                  />
                 ))
               ) : (
-                <img className="image" src={urlFor(modalItem.imagesArray[0])} alt="pizza" />
+                <img
+                  className="image"
+                  src={urlFor(modalItem.imagesArray[0])}
+                  alt="pizza"
+                />
               ))}
           </div>
           <div
@@ -114,23 +125,32 @@ const Modal = ({ mobileVersion, modalItem, setIsModalOpen }) => {
           >
             <div
               className={
-                mode === "dark" ? "project--info--wrapper info--dark" : "project--info--wrapper"
+                mode === "dark"
+                  ? "project--info--wrapper info--dark"
+                  : "project--info--wrapper"
               }
             >
               <div className="description--wrapper">
                 <h1 className="title">{modalItem.title}</h1>
                 <p className={mode === "dark" ? "text text--dark" : "text"}>
-                  {i18n.language === "english" ? modalItem.description : modalItem.descriptionUkr}
+                  {i18n.language === "english"
+                    ? modalItem.description
+                    : modalItem.descriptionUkr}
                 </p>
               </div>
               <div>
                 <h3 className="tech--text">{t("modal_tech")}</h3>
                 <motion.div className="tech--array" variants={wrapper}>
-                  {modalItem.tech.map((techImg, index) => (
-                    <motion.div key={index} className="tech--wrapper" variants={item}>
-                      <img className="tech--icon" src={urlFor(techImg)} />
-                    </motion.div>
-                  ))}
+                  {modalItem?.tech &&
+                    modalItem.tech.map((techImg, index) => (
+                      <motion.div
+                        key={index}
+                        className="tech--wrapper"
+                        variants={item}
+                      >
+                        <img className="tech--icon" src={urlFor(techImg)} />
+                      </motion.div>
+                    ))}
                 </motion.div>
               </div>
             </div>
@@ -145,7 +165,9 @@ const Modal = ({ mobileVersion, modalItem, setIsModalOpen }) => {
                 <a
                   href={modalItem.projectLink}
                   target="_blank"
-                  className={mode === "dark" ? "source--link src--dark" : "source--link"}
+                  className={
+                    mode === "dark" ? "source--link src--dark" : "source--link"
+                  }
                 >
                   <LanguageOutlined fontSize="large" />
                   <h5>{t("modal_link1")}</h5>
@@ -155,7 +177,9 @@ const Modal = ({ mobileVersion, modalItem, setIsModalOpen }) => {
                 <a
                   href={modalItem.codeLink}
                   target="_blank"
-                  className={mode === "dark" ? "source--link src--dark" : "source--link"}
+                  className={
+                    mode === "dark" ? "source--link src--dark" : "source--link"
+                  }
                 >
                   <GitHub fontSize="large" />
                   <h5>{t("modal_link2")}</h5>
@@ -165,7 +189,9 @@ const Modal = ({ mobileVersion, modalItem, setIsModalOpen }) => {
           </div>
           <div
             onClick={onHandleCloseModal}
-            className={mode === "dark" ? "modal__cross cross--dark" : "modal__cross"}
+            className={
+              mode === "dark" ? "modal__cross cross--dark" : "modal__cross"
+            }
           >
             <svg
               width="25"

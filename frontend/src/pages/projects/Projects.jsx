@@ -22,13 +22,14 @@ const Projects = ({ onHandleClickProject }) => {
   const filters = [
     i18n.language === "english" ? "All" : "Всі",
     "Fullstack",
-    "OOP",
+    "Next js",
     "TypeScript",
+    "OOP",
     "React",
   ];
 
   React.useEffect(() => {
-    const query = '*[_type == "projects"]';
+    const query = '*[_type == "projects"] | order(order desc)';
 
     client.fetch(query).then((data) => {
       setProjects(data);
@@ -70,13 +71,21 @@ const Projects = ({ onHandleClickProject }) => {
                 : false
             )
             .map((project, index) => (
-              <div key={index} className="project" onClick={() => onHandleClickProject(project)}>
+              <div
+                key={index}
+                className="project"
+                onClick={() => onHandleClickProject(project)}
+              >
                 <Typography variant="h5" className="project__title">
                   {project.title}
                 </Typography>
                 <div className="project__image--wrapper">
                   {project?.imagesArray && (
-                    <img className="image" src={urlFor(project.imagesArray[0])} alt="image" />
+                    <img
+                      className="image"
+                      src={urlFor(project.imagesArray[0])}
+                      alt="image"
+                    />
                   )}
                   <motion.div
                     transition={{
