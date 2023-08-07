@@ -72,19 +72,25 @@ const Experience = () => {
       <div className="experience__wrapper">
         <div className="experince__container">
           <div className="experience__list">
-            <div className={mode === "light" ? "line" : "line line--dark"}></div>
+            <div
+              className={mode === "light" ? "line" : "line line--dark"}
+            ></div>
             {experience.map((item, index) => (
               <div
                 onClick={() => changeSelected(index)}
                 key={index}
                 className={index === selected ? "exp" : "exp exp--gray"}
               >
-                <div className={mode === "light" ? "dot" : "dot dot--dark"}></div>
+                <div
+                  className={mode === "light" ? "dot" : "dot dot--dark"}
+                ></div>
                 <div className="exp__years">{item.year}</div>
                 <div className="exp__company">
                   <div className="exp__position">
                     {" "}
-                    {i18n.language === "english" ? item.jobName : item.jobNameUkr}
+                    {i18n.language === "english"
+                      ? item.jobName
+                      : item.jobNameUkr}
                   </div>
                   <div className="exp__company-name">{item.companyName}</div>
                 </div>
@@ -107,8 +113,11 @@ const Experience = () => {
                   {i18n.language === "english" ? job.jobName : job.jobNameUkr}
                 </motion.h3>
                 <motion.p className="work__description" variants={item}>
-                  {i18n.language === "english" ? job.description : job.descriptionUkr}
+                  {i18n.language === "english"
+                    ? job.description
+                    : job.descriptionUkr}
                 </motion.p>
+
                 <motion.div variants={item}>
                   <Link
                     sx={{
@@ -122,17 +131,27 @@ const Experience = () => {
                     {job.link}
                   </Link>
                 </motion.div>
-
-                <motion.h6 className="work__tech-title" variants={item}>
-                  {t("modal_tech")}
-                </motion.h6>
-                <motion.div className="work__tech-array" variants={secondContainer}>
-                  {job.tech.map((icon__img, index) => (
-                    <motion.div key={index} className="tech" variants={item}>
-                      <img className="tech__icon" src={urlFor(icon__img)} />
+                {job?.tech && (
+                  <>
+                    <motion.h6 className="work__tech-title" variants={item}>
+                      {t("modal_tech")}
+                    </motion.h6>
+                    <motion.div
+                      className="work__tech-array"
+                      variants={secondContainer}
+                    >
+                      {job.tech.map((icon__img, index) => (
+                        <motion.div
+                          key={index}
+                          className="tech"
+                          variants={item}
+                        >
+                          <img className="tech__icon" src={urlFor(icon__img)} />
+                        </motion.div>
+                      ))}
                     </motion.div>
-                  ))}
-                </motion.div>
+                  </>
+                )}
               </motion.div>
             )
         )}
